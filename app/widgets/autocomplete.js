@@ -48,7 +48,7 @@
 
                 var input = scope.textInput;
 
-                if (event.keyCode == 9) {  // tab key event
+                if (event.keyCode == 9 || event.keyCode == 39) {  // tab key or right arrow events
 
                     pickHint(scope.selectedIndex);
 
