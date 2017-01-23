@@ -5,7 +5,6 @@
         .module('app.widgets')
         .directive('acTextarea', acTextarea);
 
-    /* @ngInject */
     function acTextarea () {
         // Provides suggestions for completing words.
         // Usage:
@@ -14,9 +13,7 @@
         var directive = {
             link: link,
             restrict: 'E',
-            template: '<div>' +
-            '<textarea ng-model="textInput"></textarea>' +
-            '</div>' +
+            template: '<textarea ng-model="textInput"></textarea>' +
             '<div ng-show="hints.length > 0" class="hints">' +
             '<div ng-repeat="hint in hints track by $index" ng-click="pickHint($index)" ng-mouseover="selectHint($index)" ng-class="{active: $index == selectedIndex}">{{hint}}</div></div>'
 
@@ -109,6 +106,11 @@
                 // Reset the Selected Index
                 resetHints();
 
+                // Set focus back to textarea after mouse click
+                if (event.type === 'click') {
+                    event.toElement.parentElement.parentElement.firstChild.focus();
+                }
+
             }
 
             function selectHint(i) {
@@ -164,7 +166,6 @@
             }
 
         }
-
 
     }
 })();
