@@ -13,7 +13,7 @@
         var directive = {
             link: link,
             restrict: 'E',
-            template: '<textarea ng-model="textInput"></textarea>' +
+            template: '<textarea ng-model="textInput" ng-blur="resetHints()"></textarea>' +
             '<div ng-show="hints.length > 0" class="hints">' +
             '<div ng-repeat="hint in hints track by $index" ng-click="pickHint($index)" ng-mouseover="selectHint($index)" ng-class="{active: $index == selectedIndex}">{{hint}}</div></div>'
 
@@ -29,6 +29,7 @@
             scope.pickHint = pickHint;
             scope.selectHint = selectHint;
             scope.selectedIndex = 0;
+            scope.resetHints = resetHints;
 
             console.log(scope.allHints);
 

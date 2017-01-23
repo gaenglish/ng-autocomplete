@@ -21,7 +21,15 @@
 
         .hints {
             width: 200px;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .hints div {
+            padding: 5px;
             cursor: pointer;
+            font-family: Tahoma, sans-serif;
         }
 
         .hints .active {
@@ -34,6 +42,8 @@
 <body>
 <div>
     <ac-textarea ng-model="autocompleteText"></ac-textarea>
+
+    <p>Use tab and arrow keys to select your autocompleted word.</p>
 
 </div>
 
