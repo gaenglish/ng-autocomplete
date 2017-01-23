@@ -38,9 +38,9 @@
 
 
 
-            //prevent tabbing out of text field
+            //prevent tabbing out of text field if hints are available
             element.bind("keydown", function (event) {
-                if (event.keyCode == 9) {
+                if (event.keyCode == 9 && scope.hints.length > 0) {
                     event.preventDefault();
                 }
             });
