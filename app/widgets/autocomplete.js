@@ -18,7 +18,7 @@
             '<textarea ng-model="textInput"></textarea>' +
             '</div>' +
             '<div ng-show="hints.length > 0" class="hints">' +
-            '<div ng-repeat="hint in hints track by $index" ng-click="pick($index)" ng-class="{active: $index == selectedIndex}">{{hint}}</div></div>'
+            '<div ng-repeat="hint in hints track by $index" ng-click="pickHint($index)" ng-mouseover="selectHint($index)" ng-class="{active: $index == selectedIndex}">{{hint}}</div></div>'
 
         };
         return directive;
@@ -29,7 +29,8 @@
             scope.allHints = getRandomWords();
             scope.hints = [];
             scope.lastWord = '';
-            scope.pick = pick;
+            scope.pickHint = pickHint;
+            scope.selectHint = selectHint;
             scope.selectedIndex = 0;
 
             console.log(scope.allHints);
@@ -52,7 +53,7 @@
 
                 if (event.keyCode == 9) {  // tab key event
 
-                    pick(scope.selectedIndex);
+                    pickHint(scope.selectedIndex);
 
                 } else if(event.keyCode == 38) {  // up arrow key event
 
@@ -100,7 +101,7 @@
 
             }
 
-            function pick(i) {
+            function pickHint(i) {
 
                 // Complete the last word typed using the selected hint
                 scope.textInput = completeWord(scope.textInput, scope.hints[i]);
@@ -108,6 +109,10 @@
                 // Reset the Selected Index
                 resetHints();
 
+            }
+
+            function selectHint(i) {
+                scope.selectedIndex = i;
             }
 
             function resetHints() {
