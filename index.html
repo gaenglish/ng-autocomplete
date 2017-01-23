@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-ng-app="app" ng-strict-di>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title data-ng-bind="title"></title>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none!important;
+        }
+
+        ac-textarea textarea {
+            width: 600px;
+            height: 80px;
+            padding: 5px;
+            font-family: Tahoma, sans-serif;
+        }
+
+        .hints {
+            width: 200px;
+        }
+
+        .hints .active {
+            color: white;
+            background-color: darkgray;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <ac-textarea ng-model="autocompleteText"></ac-textarea>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+<script src="/app/app.module.js"></script>
+<script src="/app/widgets/widgets.module.js"></script>
+<script src="/app/widgets/autocomplete.js"></script>
+
+
+</body>
+</html>
